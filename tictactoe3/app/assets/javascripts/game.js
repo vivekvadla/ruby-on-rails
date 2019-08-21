@@ -43,6 +43,7 @@ $(document).ready(function(){
 					$('.winner').css('background-color', '#61892f');
                     $('#reload').css('color','white');
                     
+                    
                 }
                 if (winner() == "O") {
                     if ((move % 2) != 1)
