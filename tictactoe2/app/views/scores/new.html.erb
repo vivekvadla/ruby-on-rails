@@ -1,0 +1,14 @@
+<%= form_with model: @score, local: true do |form| %>
+    <p>
+      <b><%= form.label :player1 %>:</b>
+      <%= select_tag "player1", options_from_collection_for_select(@players.active, "name", "name"), prompt: "Select Player 1" %>
+    </p>
+    <p>
+      <b><%= form.label :player2 %>:</b>
+      <%= select_tag "player2", options_from_collection_for_select(@players.active, "name", "name"), prompt: "Select Player 2" %>
+    </p>
+    <p>
+      <%= form.submit 'Selected',class:'player-selected' %>
+    </p>
+   
+  <% end %>s

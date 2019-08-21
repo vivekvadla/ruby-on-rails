@@ -1,0 +1,73 @@
+<div class="container" id="players" onload="check()">
+ 
+  <h4>choose key for player one</h4>
+  <div>
+    <input type="radio" id="player_1" name="player" value="1" checked>
+    <label for="player_1">X</label>
+  </div>
+  <div>
+    <input type="radio" id="player_2" name="player" value="2">
+    <label for="player_2">O</label>
+  </div>
+  <button class="btn btn-primary"  onclick="check('<%= @score.player1 %>','<%= @score.player2 %>');" >select</button>
+  <button class="btn btn-primary" id="select_player">startgame</button>
+</div>
+
+player 1:<%= @score.player1 %></br>
+player 2:<%= @score.player2 %></br>
+<% name1 = @score.player1 %>
+<%= @players.select(:id).find_by(name: name1).id %>
+
+<% user = Player.find_by(id: '3') %>
+<% user.score += 1 %>
+<% user.save %>
+
+<table class='table-g' style="display:none">
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<div class="container" id="cpu-div" style="display:none">
+  <table class="table-cpu">
+    <tr>
+      <td class="cell" id="0"></td>
+      <td class="cell" id="1"></td>
+      <td class="cell" id="2"></td>
+    </tr>
+    <tr>
+      <td class="cell" id="3"></td>
+      <td class="cell" id="4"></td>
+      <td class="cell" id="5"></td>
+    </tr>
+    <tr>
+      <td class="cell" id="6"></td>
+      <td class="cell" id="7"></td>
+      <td class="cell" id="8"></td>
+    </tr>
+  </table>
+  <div class="endgame">
+    <div class="text"></div>
+  </div>
+  <button id="replay">replay</button>
+</div>
+
+<div id="game-result">
+
+</div>
+
+<div> 
+
+</div>

@@ -1,0 +1,26 @@
+<div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+        <div class="container form-inline " style="justify-content:center;padding-top:40px;">
+            <%= form_for @player do |f| %>
+            <div class="form-group" style="padding:20px;">
+                <%= f.label :Name,class:'mr-sm-2' %>
+                <%= f.text_field :name, class:'form-control',style:'border: none;
+    border-bottom: 1px solid #000000;border-radius:0;' %>
+            </div>
+
+            <div class="form-group" style="padding:20px;">
+
+                <%= f.label :status,class:'mr-sm-2' %>
+                <%= f.radio_button :status, "Active" %> Active </br>
+                <%= f.radio_button :status, "Inactive" %> Inactive
+            </div>
+            <div class="actions form-group" style="padding:20px;">
+                <%= f.submit 'save', class:'btn btn-primary' %> &nbsp;
+                <%= link_to "reset", edit_player_path(@player) , class:'btn btn-primary'%>
+            </div>
+
+            <% end %>
+        </div>
+
+    </div>
+</div>

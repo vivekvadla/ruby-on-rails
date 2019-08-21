@@ -1,10 +1,13 @@
 class PlayersController < ApplicationController
     def index
         @players = Player.order('lower(name)').all
+        @scores = Score.all
+        
     end
 
     def new
         @player = Player.new
+       
     end
 
     def create
@@ -19,6 +22,8 @@ class PlayersController < ApplicationController
     end
 
     def edit
+        
+        @scores = Score.all
         @player = Player.find(params[:id])
     end
 
@@ -42,4 +47,5 @@ class PlayersController < ApplicationController
     def player_params
         params.require(:player).permit(:name,:status,:commit)
     end
+    
 end

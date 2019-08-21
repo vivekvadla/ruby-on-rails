@@ -1,0 +1,21 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Player 1</th>
+            <th>Player 2</th>
+            <th>Winner</th>
+            <th>Status</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <% @scores.each do |score| %>
+        <tr>
+            <td><%= score.player1 %></td>
+            <td><%= score.player2 %></td>
+            <td><%= score.winner %></td>
+            <td><%= score.status %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

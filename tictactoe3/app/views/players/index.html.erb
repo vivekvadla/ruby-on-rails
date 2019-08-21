@@ -1,0 +1,31 @@
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+        <%= link_to "Add Player", new_player_path , class:'btn btn-primary', id:'add_new' %>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Score</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <% @players.active.each do |player| %>
+                <tr>
+                    <td><%= player.name %></td>
+                    <td><%= player.status %></td>
+                    <td><%= player.score %></td>
+                    <td><%= link_to "Edit",edit_player_path(player) ,class:'btn btn-info btn-sm'%></td>
+                    <td><%= link_to "Delete", player, method: :delete, data: { confirm:"Are you sure"},class:'btn btn-warning btn-sm' %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    
+</div>

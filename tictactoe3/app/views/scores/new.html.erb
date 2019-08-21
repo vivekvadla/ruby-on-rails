@@ -1,0 +1,32 @@
+<div id="cpu"  style="float:right">
+  <h5>Play with cpu</h5>
+  <button class="btn btn-info" id="cpu" onclick='cpu()'>start with cpu</button>
+</div>
+
+<div class="player-select"  style="padding:10px;">
+  <%= form_for @score, url: scores_path, local: true do |form| %>
+  <p>
+    <b><%= form.label :player_1 %>:</b>
+    <%= form.select(:player1) do %>
+    <% @players.active.each do |player| %>
+    <%= content_tag(:option, player.name, value: player.name) %>
+    <% end %>
+    <% end %>
+  </p>
+  <p>
+    <b><%= form.label :player_2 %>:</b>
+    <%= form.select(:player2) do %>
+    <% @players.active.each do |player| %>
+    <%= content_tag(:option, player.name, value: player.name) %>
+    <% end %>
+    <% end %>
+  </p>
+  <p >
+    <%= form.submit 'save players',class:'player-selected' %>
+  </p>
+  <% end %>
+</div>
+
+
+
+

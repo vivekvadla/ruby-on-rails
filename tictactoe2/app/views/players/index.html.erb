@@ -7,15 +7,18 @@
                 <tr>
                     <th>Name</th>
                     <th>Status</th>
-                    <th>Actions</th>
-                    <th></th>
+                    <th>Score</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    
                 </tr>
             </thead>
             <tbody>
-                <% @players.each do |player| %>
+                <% @players.active.each do |player| %>
                 <tr>
                     <td><%= player.name %></td>
                     <td><%= player.status %></td>
+                    <td><%= player.score %></td>
                     <td><%= link_to "Edit",edit_player_path(player) ,class:'btn btn-info btn-sm'%></td>
                     <td><%= link_to "Delete", player, method: :delete, data: { confirm:"Are you sure"},class:'btn btn-warning btn-sm' %>
                     </td>
@@ -25,6 +28,9 @@
         </table>
     </div>
     <div id="game" class="container tab-pane fade"><br>
-        <h3>Game</h3>
+    <%= render 'layouts/game'  %>
+   <div id="game-result">
+    
+    </div>
     </div>
 </div>
