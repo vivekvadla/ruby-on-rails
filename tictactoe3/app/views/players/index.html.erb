@@ -9,8 +9,7 @@
                     <th>Status</th>
                     <th>Score</th>
                     <th>Edit</th>
-                    <th>Delete</th>
-                    
+                    <th>Delete</th>    
                 </tr>
             </thead>
             <tbody>
@@ -20,8 +19,7 @@
                     <td><%= player.status %></td>
                     <td><%= player.score %></td>
                     <td><%= link_to "Edit",edit_player_path(player) ,class:'btn btn-info btn-sm'%></td>
-                    <td><%= link_to "Delete", player, method: :delete, data: { confirm:"Are you sure"},class:'btn btn-warning btn-sm' %>
-                    </td>
+                    <td><%= link_to "Delete", player,method: :delete ,data: {confirm:"Are you sure?"},class:'btn btn-warning btn-sm' %></td>
                 </tr>
                 <% end %>
             </tbody>

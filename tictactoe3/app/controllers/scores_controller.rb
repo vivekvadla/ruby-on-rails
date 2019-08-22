@@ -35,11 +35,6 @@ class ScoresController < ApplicationController
         end
     end
 
-    def destroy
-        @score = Score.find(params[:id])
-        @score.destroy
-        redirect_to players_path
-    end
 
     private
     def score_params
