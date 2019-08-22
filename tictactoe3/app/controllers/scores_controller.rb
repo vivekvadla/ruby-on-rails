@@ -25,15 +25,12 @@ class ScoresController < ApplicationController
     def edit
         @score = Score.find(params[:id])
     end
-    def det_update
-        @score = Score.find(params[:id])
-        
-    end
+   
     def update
         @score = Score.find(params[:id])
         if params[:commit] == 'save'
             @score.update(score_params)
-            redirect_to players_path
+            redirect_to scores_path
         else
             render :edit
         end
