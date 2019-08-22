@@ -9,7 +9,7 @@
     <b><%= form.label :player_1 %>:</b>
     <%= form.select(:player1) do %>
     <% @players.active.each do |player| %>
-    <%= content_tag(:option, player.name, value: player.name) %>
+    <%= content_tag(:option, player.name, value: player.id) %>
     <% end %>
     <% end %>
   </p>
@@ -17,7 +17,7 @@
     <b><%= form.label :player_2 %>:</b>
     <%= form.select(:player2) do %>
     <% @players.active.each do |player| %>
-    <%= content_tag(:option, player.name, value: player.name) %>
+    <%= content_tag(:option, player.name, value: player.id) %>
     <% end %>
     <% end %>
   </p>

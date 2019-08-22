@@ -9,8 +9,6 @@ var p2id;
 var score1,score2,status1,status2;
 function check(id,p1,p2,id1,id2,sc1,sc2,st1,st2){
     sid = id;
-player1 = p1;
-player2 = p2;
 p1id = id1;
 p2id = id2;
 score1 = sc1;
@@ -52,14 +50,14 @@ $(document).ready(function(){
                        pstatus = status1;
                        score = parseInt(score1) + 1;
                     }
-                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,player1,player2,win,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
+                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,p1id,p2id,win_id,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
                     $('.winner').css('background-color', '#61892f');
                     $('#reload').css('color','white');
                 }
                 if (winner() == "draw") {
                     status = "draw";
                     win ="-";
-                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,player1,player2,win,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
+                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,p1id,p2id,win_id,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
                     $('.winner').css('background-color', '#61892f');
                     $('#reload').css('color','white');
                     
@@ -79,7 +77,7 @@ $(document).ready(function(){
                        pstatus = status2;
                        score = parseInt(score2) + 1;
                     }
-                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,player1,player2,win,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
+                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,p1id,p2id,win_id,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
                     $('.winner').css('background-color', '#61892f');
                     $('#reload').css('color','white');
                 }

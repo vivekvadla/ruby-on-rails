@@ -9,20 +9,20 @@
     <input type="radio" id="player_2" name="player" value="2">
     <label for="player_2">O</label>
   </div>
-  <% name1 = @score.player1 %>
-  <% name2 = @score.player2 %>
+  <% name1 = @players.find(@score.player1).name %>
+  <% name2 = @players.find(@score.player2).name %>
   <%= id1 = @players.select(:id).find_by(name: name1).id %>
   <%= id2 = @players.select(:id).find_by(name: name2).id %>
   <%= sc1 = @players.find(id1).score %>
   <%= sc2 = @players.find(id2).score %>
   <%= st1 = @players.find(id1).status %>
   <%= st2 = @players.find(id2).status %>
-  <button class="btn btn-primary"  onclick="check('<%= @score.id %>','<%= @score.player1 %>','<%= @score.player2 %>','<%= id1 %>','<%= id2 %>','<%= sc1 %>','<%= sc2 %>','<%= st1 %>','<%= st2 %>');" >select</button>
+  <button class="btn btn-primary"  onclick="check('<%= @score.id %>','<%= name1 %>','<%= name2 %>','<%= id1 %>','<%= id2 %>','<%= sc1 %>','<%= sc2 %>','<%= st1 %>','<%= st2 %>');" >select</button>
   <button class="btn btn-primary" id="select_player">startgame</button>
 </div>
 
-player 1:<%= @score.player1 %></br>
-player 2:<%= @score.player2 %></br>
+player 1:<%= name1 %></br>
+player 2:<%= name2 %></br>
 
 <table class='table-g' style="display:none">
   <tr>
