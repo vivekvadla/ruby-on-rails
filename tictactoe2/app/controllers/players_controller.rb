@@ -21,16 +21,13 @@ class PlayersController < ApplicationController
         end
     end
 
-    def edit
-        
-        @scores = Score.all
+    def edit 
         @player = Player.find(params[:id])
     end
 
     def update
         @player = Player.find(params[:id])
-        if params[:commit] == 'save'
-            @player.update(player_params)
+        if @player.update(player_params)
             redirect_to players_path
         else
             render :edit
@@ -45,7 +42,7 @@ class PlayersController < ApplicationController
 
     private
     def player_params
-        params.require(:player).permit(:name,:status,:commit)
+        params.require(:player).permit(:name,:status,:score,:commit)
     end
     
 end

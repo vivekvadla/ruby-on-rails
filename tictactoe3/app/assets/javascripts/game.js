@@ -1,9 +1,22 @@
 var play = true;
-var winner = "";
-var status = "won";
-
-function check(id,p1,p2){
-    
+var win = "";
+var status = "won"
+var sid ,win_id,score,pstatus;
+var player1;
+var player2;
+var p1id;
+var p2id;
+var score1,score2,status1,status2;
+function check(id,p1,p2,id1,id2,sc1,sc2,st1,st2){
+    sid = id;
+player1 = p1;
+player2 = p2;
+p1id = id1;
+p2id = id2;
+score1 = sc1;
+score2 = sc2;
+status1 = st1;
+status2 = st2;
 $(document).ready(function(){
     $('#select_player').click(function(){
         $('#players').hide();
@@ -28,19 +41,26 @@ $(document).ready(function(){
                    
                     if ((move % 2) == 1)
                     {
-                       winner = p2
+                       win = p2
+                       win_id = p2id;
+                       pstatus = status2;
+                       score = parseInt(score2) + 1;
                     }
                     else{
-                        winner = p1;
+                        win = p1
+                       win_id = p1id;
+                       pstatus = status1;
+                       score = parseInt(score1) + 1;
                     }
-                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+winner+'</div><button class="btn btn-primary" onclick="check()" id="reload">reload</button> <a class="btn btn-info" style="font-weight: bold;" toggle="tab" href="/scores">scoreboard</a>');
-					$('.winner').css('background-color', '#61892f');
+                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,player1,player2,win,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
+                    $('.winner').css('background-color', '#61892f');
                     $('#reload').css('color','white');
                 }
                 if (winner() == "draw") {
                     status = "draw";
-                    $('#game-result').html('<div class="winner"><span>Winner: </span>Draw match</div><button class="btn btn-primary" onclick="check()" id="reload">reload</button> <a class="btn btn-info" style="font-weight: bold;" toggle="tab" href="/scores">scoreboard</a>');
-					$('.winner').css('background-color', '#61892f');
+                    win ="-";
+                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,player1,player2,win,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
+                    $('.winner').css('background-color', '#61892f');
                     $('#reload').css('color','white');
                     
                     
@@ -48,13 +68,19 @@ $(document).ready(function(){
                 if (winner() == "O") {
                     if ((move % 2) != 1)
                     {
-                        winner = p1;
+                        win = p1
+                       win_id = p1id;
+                       pstatus = status1;
+                       score = parseInt(score1) + 1;
                     }
                     else{
-                        winner = p2;
+                        win = p2
+                       win_id = p2id;
+                       pstatus = status2;
+                       score = parseInt(score2) + 1;
                     }
-                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+winner+'</div><button class="btn btn-primary" onclick="check()" id="reload">reload</button> <a class="btn btn-info" style="font-weight: bold;" toggle="tab" href="/scores">scoreboard</a>');
-					$('.winner').css('background-color', '#e85a4f');
+                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,player1,player2,win,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
+                    $('.winner').css('background-color', '#61892f');
                     $('#reload').css('color','white');
                 }
                 
@@ -110,4 +136,23 @@ function scorecardfun(){
     $('.table-g').hide();
     $('#scorecard').show();
 
+}
+function update(id,p1,p2,win,status){
+        $.ajax({
+            url: '/scores/'+id,
+            type: 'put',
+            data: {authenticity_token: $('[name="csrf-token"]')[0].content,score:{player1:p1,player2:p2, winner:win,status:status} },
+            dataType: 'script'
+        })
+       
+       
+}
+function score_update(win,win_id,status,score){
+    $.ajax({
+        url: '/players/'+win_id,
+        type: 'put',
+        data: {authenticity_token: $('[name="csrf-token"]')[0].content,player:{name:win,status:status,score:score} },
+        dataType: 'script'
+    })
+ 
 }
