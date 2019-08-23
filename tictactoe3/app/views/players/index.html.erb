@@ -5,6 +5,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Avatar</th>
                     <th>Name</th>
                     <th>Status</th>
                     <th>Score</th>
@@ -15,6 +16,7 @@
             <tbody>
                 <% @players.active.each do |player| %>
                 <tr>
+                    <td><%= avatar = image_tag(player.image_url(:thumb).to_s) %></td>
                     <td><%= player.name %></td>
                     <td><%= player.status %></td>
                     <td><%= player.score %></td>
