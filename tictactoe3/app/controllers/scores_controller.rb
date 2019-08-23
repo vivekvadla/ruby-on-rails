@@ -11,6 +11,7 @@ class ScoresController < ApplicationController
     end
 
     def create
+        @players = Player.all
         @score = Score.new(score_params)
         if @score.save  
             redirect_to @score
@@ -38,6 +39,6 @@ class ScoresController < ApplicationController
 
     private
     def score_params
-        params.require(:score).permit(:player1,:player2,:winner,:status,:commit)
+        params.require(:score).permit(:winner,:status,:player1_id,:player2_id,:commit)
     end
 end

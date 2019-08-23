@@ -56,8 +56,8 @@ $(document).ready(function(){
                 }
                 if (winner() == "draw") {
                     status = "draw";
-                    win ="-";
-                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,p1id,p2id,win_id,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
+                    win = "-";
+                    $('#game-result').html('<div class="winner"><span>Winner: </span>'+win+'</div><button class="btn btn-primary" onclick="update(sid,p1id,p2id,win,status);score_update(win,win_id,pstatus,score)" id="reload">save</button> ');
                     $('.winner').css('background-color', '#61892f');
                     $('#reload').css('color','white');
                     

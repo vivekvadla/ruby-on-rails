@@ -12,9 +12,14 @@
     <tbody>
         <% @scores.each do |score| %>
         <tr>
-            <td><%= @players.find(score.player1).name %></td>
-            <td><%= @players.find(score.player2).name %></td>
-            <td><%=  @players.find(score.winner).name %></td>
+            <td><%= @players.find(score.player1_id).name %></td>
+            <td><%= @players.find(score.player2_id).name %></td>
+            <% if score.winner == "-" %>
+            <td><%=  score.winner %></td>
+            <% else %>
+               <td><%=  @players.find(score.winner).name %></td>
+            <% end %>
+            
             <td><%= score.status %></td>
         </tr>
         <% end %>

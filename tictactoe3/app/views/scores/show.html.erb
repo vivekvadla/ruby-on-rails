@@ -1,5 +1,5 @@
 <div class="container" id="players" onload="check()">
- 
+
   <h4>choose key for player one</h4>
   <div>
     <input type="radio" id="player_1" name="player" value="1" checked>
@@ -9,15 +9,16 @@
     <input type="radio" id="player_2" name="player" value="2">
     <label for="player_2">O</label>
   </div>
-  <% name1 = @players.find(@score.player1).name %>
-  <% name2 = @players.find(@score.player2).name %>
+  <% name1 = @players.find(@score.player1_id).name %>
+  <% name2 = @players.find(@score.player2_id).name %>
   <%= id1 = @players.select(:id).find_by(name: name1).id %>
   <%= id2 = @players.select(:id).find_by(name: name2).id %>
   <%= sc1 = @players.find(id1).score %>
   <%= sc2 = @players.find(id2).score %>
   <%= st1 = @players.find(id1).status %>
   <%= st2 = @players.find(id2).status %>
-  <button class="btn btn-primary"  onclick="check('<%= @score.id %>','<%= name1 %>','<%= name2 %>','<%= id1 %>','<%= id2 %>','<%= sc1 %>','<%= sc2 %>','<%= st1 %>','<%= st2 %>');" >select</button>
+  <button class="btn btn-primary"
+    onclick="check('<%= @score.id %>','<%= name1 %>','<%= name2 %>','<%= id1 %>','<%= id2 %>','<%= sc1 %>','<%= sc2 %>','<%= st1 %>','<%= st2 %>');">select</button>
   <button class="btn btn-primary" id="select_player">startgame</button>
 </div>
 
@@ -42,31 +43,8 @@ player 2:<%= name2 %></br>
   </tr>
 </table>
 
-<div class="container" id="cpu-div" style="display:none">
-  <table class="table-cpu">
-    <tr>
-      <td class="cell" id="0"></td>
-      <td class="cell" id="1"></td>
-      <td class="cell" id="2"></td>
-    </tr>
-    <tr>
-      <td class="cell" id="3"></td>
-      <td class="cell" id="4"></td>
-      <td class="cell" id="5"></td>
-    </tr>
-    <tr>
-      <td class="cell" id="6"></td>
-      <td class="cell" id="7"></td>
-      <td class="cell" id="8"></td>
-    </tr>
-  </table>
-  <div class="endgame">
-    <div class="text"></div>
-  </div>
-  <button id="replay">replay</button>
-</div>
+
 
 <div id="game-result">
 
 </div>
-

@@ -7,7 +7,7 @@
   <%= form_for @score, url: scores_path, local: true do |form| %>
   <p>
     <b><%= form.label :player_1 %>:</b>
-    <%= form.select(:player1) do %>
+    <%= form.select(:player1_id) do %>
     <% @players.active.each do |player| %>
     <%= content_tag(:option, player.name, value: player.id) %>
     <% end %>
@@ -15,7 +15,7 @@
   </p>
   <p>
     <b><%= form.label :player_2 %>:</b>
-    <%= form.select(:player2) do %>
+    <%= form.select(:player2_id) do %>
     <% @players.active.each do |player| %>
     <%= content_tag(:option, player.name, value: player.id) %>
     <% end %>
@@ -30,3 +30,28 @@
 
 
 
+<div class="container" id="cpu-div" style="display:none">
+  <table class="table-cpu">
+    <tr>
+      <td class="cell" id="0"></td>
+      <td class="cell" id="1"></td>
+      <td class="cell" id="2"></td>
+    </tr>
+    <tr>
+      <td class="cell" id="3"></td>
+      <td class="cell" id="4"></td>
+      <td class="cell" id="5"></td>
+    </tr>
+    <tr>
+      <td class="cell" id="6"></td>
+      <td class="cell" id="7"></td>
+      <td class="cell" id="8"></td>
+    </tr>
+  </table>
+  <div class="endgame">
+    <div class="text">
+      
+    </div>
+  </div>
+  <button id="replay">replay</button>
+</div>
