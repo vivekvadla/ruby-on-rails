@@ -1,10 +1,14 @@
 class PlayersController < ApplicationController
     def index
         @players = Player.order('lower(name)').all
+        
+        @winner = Player.order('score DESC').all
+        @avatar = Avatar.all
     end
 
     def new
         @player = Player.new
+        @player.build_avatar
     end
 
     def create
@@ -40,7 +44,7 @@ class PlayersController < ApplicationController
 
     private
     def player_params
-        params.require(:player).permit(:name,:status,:score,:image,:commit)
+        params.require(:player).permit(:name,:status,:score,:commit,avatar_attributes: [:image])
     end
     
 end

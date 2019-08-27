@@ -21,17 +21,21 @@
                 <%= f.radio_button :status, "Inactive",:checked => true %> Inactive
             </div>
             
-            <div class="form-group">
-                add avatar
-                <%= f.file_field :image %>
+            
+            <%= f.fields_for :avatar do |o| %>
+                <div class="form-group">
+                    add avatar
+                    <%= o.file_field :image %>
             </div>
+            <% end %>
             <div class="actions form-group" style="padding:20px;">
                 <%= f.submit 'save', class:'btn btn-primary' %> &nbsp;
                 <%= link_to "reset", new_player_path , class:'btn btn-primary'%>
 
             </div>
-
+           
             <% end %>
+            
         </div>
     </div>
 

@@ -14,7 +14,7 @@
         <tr>
             <td><%= @players.find(score.player1_id).name %></td>
             <td><%= @players.find(score.player2_id).name %></td>
-            <% if score.winner == "-" %>
+            <% if score.winner == "-"|| score.winner == "" %>
             <td><%=  score.winner %></td>
             <% else %>
                <td><%=  @players.find(score.winner).name %></td>

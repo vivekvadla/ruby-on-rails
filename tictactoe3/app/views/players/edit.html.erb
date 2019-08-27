@@ -2,6 +2,13 @@
     <div id="home" class="container tab-pane active"><br>
         <div class="container form-inline " style="justify-content:center;padding-top:40px;">
             <%= form_for @player do |f| %>
+
+            <% if @player.errors.full_messages.any? %>
+            <% @player.errors.full_messages.each do |error_message| %>
+            <%= error_message if @player.errors.full_messages.first == error_message %> <br />
+            <% end %>
+            <% end %>
+
             <div class="form-group" style="padding:20px;">
                 <%= f.label :Name,class:'mr-sm-2' %>
                 <%= f.text_field :name, class:'form-control',style:'border: none;
@@ -14,6 +21,12 @@
                 <%= f.radio_button :status, "Active" %> Active </br>
                 <%= f.radio_button :status, "Inactive" %> Inactive
             </div>
+            <%= f.fields_for :avatar do |o| %>
+            <div class="form-group">
+                add avatar &nbsp;
+                <%= o.file_field :image %>
+            </div>
+            <% end %>
             <div class="actions form-group" style="padding:20px;">
                 <%= f.submit 'save', class:'btn btn-primary' %> &nbsp;
                 <%= link_to "reset", edit_player_path(@player) , class:'btn btn-primary'%>

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_23_092641) do
+ActiveRecord::Schema.define(version: 2019_08_23_114757) do
+
+  create_table "avatars", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "player_id"
+    t.index ["player_id"], name: "index_avatars_on_player_id"
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
