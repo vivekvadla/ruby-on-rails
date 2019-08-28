@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'guard', '~> 2.14', '>= 2.14.1'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'kaminari'
 gem "rack-livereload", group: :development
 group :development do
   gem 'guard-livereload', '~> 2.5', require: false

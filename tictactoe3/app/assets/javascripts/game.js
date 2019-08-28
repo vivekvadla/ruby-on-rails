@@ -15,7 +15,9 @@ score1 = sc1;
 score2 = sc2;
 status1 = st1;
 status2 = st2;
+
 $(document).ready(function(){
+    
     $('#select_player').click(function(){
         $('#players').hide();
       $('.table-g').show();

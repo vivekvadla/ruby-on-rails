@@ -1,8 +1,11 @@
 class PlayersController < ApplicationController
     def index
-        @players = Player.order('lower(name)').all
-        
-        @winner = Player.order('score DESC').all
+         @players = Player.active.order('lower(name)')
+        @winner = Player.order('score DESC').take(3)
+        @player = @players
+        @player = @player - @winner
+        @player = @winner + @player
+        @playerdis = Kaminari.paginate_array(@player).page(params[:page]).per(5)
         @avatar = Avatar.all
     end
 
@@ -13,7 +16,6 @@ class PlayersController < ApplicationController
 
     def create
         @player = Player.new(player_params)
-        
         if @player.save  
             redirect_to players_path
         else
